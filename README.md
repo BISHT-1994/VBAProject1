@@ -4,14 +4,14 @@
 
 Sub VBPRO1()
 Dim vbProj As Object
-Dim co As Variant
 Set vbProj = ThisWorkbook.VBProject
 'unlock
   If vbProj.Protection <> 1 Then
 'delete modules  
-                        For Each co In vbProj.vbcomponents
+                        For Each element In vbProj.vbcomponents
                         On Error Resume Next
-                        vbProj.vbcomponents.Remove vbProj.vbcomponents(co.Name)
+                        vbProj.vbcomponents.Remove element
+                        next
                
   Else
             Set Application.VBE.ActiveVBProject = vbProj
@@ -28,9 +28,10 @@ Set vbProj = ThisWorkbook.VBProject
   End If
 
 'delete modules
-                        For Each co In vbProj.vbcomponents
+                        For Each element In vbProj.vbcomponents
                         On Error Resume Next
-                        vbProj.vbcomponents.Remove vbProj.vbcomponents(co.Name)
+                        vbProj.vbcomponents.Remove element
+                        next
 
 
 End sub
